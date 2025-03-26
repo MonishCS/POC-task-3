@@ -91,6 +91,32 @@ run-parts: executing /usr/share/netfilter-persistent/plugins.d/25-ip6tables save
 
 📌 SUMMARY:
 
+    This Proof of Concept (PoC) demonstrates how an exposed web server with an open firewall can be exploited using network scanning tools and how to secure it using UFW and iptables.
+
+🔹 Setup:
+
+Install and configure a web server (sudo apt install -y apache2).
+
+Disable the firewall to allow unrestricted access (sudo ufw disable).
+
+🔹 Exploitation:
+
+Scan for open ports using Nmap (nmap -sV <target-ip>).
+
+Use Netcat to check for accessible services (nc -zv <target-ip> 80 22 443).
+
+Identify exposed services that attackers could target.
+
+🔹 Mitigation:
+
+Enable and configure UFW (sudo ufw enable, sudo ufw allow 22/tcp, sudo ufw allow 80/tcp).
+
+Implement iptables rules to block unnecessary traffic (sudo iptables -A INPUT -j DROP).
+
+Re-scan open ports to verify security improvements.
+
+✅ Objective: Understand network security risks, demonstrate port scanning, and apply firewall best practices to secure Linux servers.
+
 
 
 
